@@ -73,7 +73,7 @@ GEM
       highline (~> 1.7.2)
     concurrent-ruby (1.1.8)
     declarative (0.0.20)
-    declarative-option (0.1.1)
+    declarative-option (0.1.0)
     digest-crc (0.6.3)
       rake (>= 12.0.0, < 14.0.0)
     domain_name (0.5.20190701)
