@@ -106,24 +106,22 @@ platform(:ios) do
     tmp_path = '/tmp/fastlane_build'
 
     # Not possible to use gym here because it will only create an ipa archive
-    xcodebuild(
-      configuration: 'Release',
-      sdk: 'iphonesimulator',
-      derivedDataPath: tmp_path,
-      xcargs: "CONFIGURATION_BUILD_DIR=#{tmp_path}",
-      scheme: base_name
-    )
-
-    app_path = Dir[File.join(tmp_path, '**', '*.app')].last
-
-    zipped_bundle = zip(path: app_path, output_path: File.join(tmp_path, 'app.zip'))
+    #xcodebuild(
+    #  configuration: 'Release',
+    #  sdk: 'iphonesimulator',
+    #  derivedDataPath: tmp_path,
+    #  xcargs: "CONFIGURATION_BUILD_DIR=#{tmp_path}",
+    #  scheme: base_name
+    #)
+    #app_path = Dir[File.join(tmp_path, '**', '*.app')].last
+    #zipped_bundle = zip(path: app_path, output_path: File.join(tmp_path, 'app.zip'))
 
     public_key = get_appetize_public_key('ios', base_name)
 
-    appetize(
-      path: zipped_bundle,
+    build_and_upload_to_appetize(
       public_key: public_key,
-      note: base_name
+      note: base_name,
+      scheme: base_name
     )
 
     update_url(
