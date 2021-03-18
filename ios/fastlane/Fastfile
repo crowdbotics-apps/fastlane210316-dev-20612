@@ -172,5 +172,5 @@ def fetch_appetize_public_key(platform, base_name)
     app_app['note'] == base_name && app_app['platform'] == platform
   end
 
-  item['publicKey']
+  item && item['publicKey']
 end
